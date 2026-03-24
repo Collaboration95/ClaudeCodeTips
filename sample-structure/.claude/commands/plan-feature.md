@@ -23,9 +23,9 @@ Match the tags in PAST_LEARNINGS entries against the feature description:
 | Feature type                  | Tags to match                    |
 |-------------------------------|----------------------------------|
 | New integration               | [integration] [auth] [schema]    |
-| Queue / async work            | [sqs] [performance]              |
+| Queue / async work            | [queue] [performance]            |
 | Auth / token handling         | [auth]                           |
-| Output or data shape changes  | [schema] [s3]                    |
+| Output or data shape changes  | [schema] [storage]               |
 | Infrastructure changes        | [infra]                          |
 
 If relevant entries found, present a ⚠️ Watch Out block first, before any planning:
@@ -68,7 +68,7 @@ Decisions that need to be made before implementation starts.
 ## Guardrails
 
 - Do NOT write implementation code unless explicitly asked after this planning phase
-- Do NOT suggest changing SQS queue names, S3 paths, or completion notification
+- Do NOT suggest changing queue names, storage paths, or completion notification
   format without flagging downstream dependencies (§7 of SERVICE.md)
 - Always check §8 (Architectural Decisions) before suggesting structural changes
 - If your plan conflicts with an existing architectural decision, flag it explicitly

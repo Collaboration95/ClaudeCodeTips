@@ -29,7 +29,7 @@ Only regenerate sections affected by the changed files:
 |-------------------------------------|-------------------------------------------------------------|
 | src/integrations/**                 | §4 Integrations table, §5 Env vars (if new), §6 Schema     |
 | src/handlers/** or entry point      | §2 Trigger & Entry Point, §3 Data Flow                     |
-| src/s3/** or output types           | §6 Output Schema                                           |
+| src/storage/** or output types      | §6 Output Schema                                           |
 | .env.example or config files        | §5 Environment Variables                                   |
 | infra/**                            | §3 Data Flow diagram, §4 Integrations                     |
 | Downstream notification code        | §7 Downstream Consumers                                    |
@@ -51,7 +51,7 @@ For each affected section:
 ## Step 4 — Update CHANGELOG.context.md
 
 Append:
-  ## [DATE] — [short reason, e.g. "Added Honeybadger integration"]
+  ## [DATE] — [short reason, e.g. "Added Stripe integration"]
   - Sections updated: [list]
   - Commits: [SHA list or titles]
   - New HEAD SHA: [current HEAD]

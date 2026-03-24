@@ -13,7 +13,7 @@ What this service does in one sentence.
 ---
 
 ## §2 Trigger & Entry Point
-- **Trigger type:** SQS / HTTP / Cron / Event
+- **Trigger type:** HTTP / Queue / Cron / Event
 - **Triggered by:** [upstream service or event source]
 - **Entry handler:** src/handlers/...
 
@@ -25,20 +25,20 @@ What this service does in one sentence.
 2. Authenticates via [method]
 3. Fetches [Y] from [service/API]
 4. Transforms / processes
-5. Writes to [S3 / DB / queue]
-6. Sends completion notification to [SQS / SNS]
+5. Writes to [DB / Storage / queue]
+6. Sends completion notification to [Queue / Webhook]
 
 ASCII Diagram:
-  [SQS: incident-queue]
+  [Queue: order-queue]
           ↓
     [this-service]
-     ├─ queries [DataSource A]
-     ├─ queries [DataSource B]
-     └─ writes → [S3: bucket/{incident_id}/]
+     ├─ queries [Postgres]
+     ├─ queries [Stripe API]
+     └─ writes → [Storage: bucket/{order_id}/]
           ↓
-    [SQS: completion-queue]
-     ├─ [consumer-service-A reads]
-     └─ [consumer-service-B reads]
+    [Queue: fulfillment-queue]
+     ├─ [notification-service reads]
+     └─ [analytics-service reads]
 
 ---
 
@@ -57,10 +57,10 @@ ASCII Diagram:
 
 ---
 
-## §6 Output Schema (S3 / Event payload)
+## §6 Output Schema (Storage / Event payload)
 
   {
-    "incident_id": "string",
+    "order_id": "string",
     "source": "...",
     "fetched_at": "ISO8601",
     "raw_data": {},

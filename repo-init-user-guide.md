@@ -133,12 +133,12 @@ Instead of explaining the service each time, just run:
 
 Cursor / OpenCode:
 ```
-@plan-feature integrate Honeybadger bug monitoring into melt-fetcher and downstream
+@plan-feature integrate Stripe payments into order-service and downstream
 ```
 
 Claude Code:
 ```
-/plan-feature integrate Honeybadger bug monitoring into melt-fetcher and downstream
+/plan-feature integrate Stripe payments into order-service and downstream
 ```
 
 The skill will:

@@ -8,7 +8,7 @@
 ## Entry Format
 
   ### [YYYY-MM-DD] — [Short Title]
-  **Tags:** [integration] [sqs] [auth] [schema] [performance] [infra]
+  **Tags:** [integration] [queue] [auth] [schema] [performance] [infra]
   **Context:** What were we trying to do?
   **What happened / what we learned:**
   **Decision made:**
