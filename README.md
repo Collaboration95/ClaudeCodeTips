@@ -4,9 +4,7 @@
 
 ---
 
-## Skills
-
-### pr-flow
+## Skill
 
 Orchestrates a structured PR workflow — from intent definition through GitHub Issues, parallel enrichment, grouped implementation, and clean PR delivery.
 
@@ -19,20 +17,6 @@ cp -r pr-flow/ ~/.claude/skills/pr-flow/
 ```
 
 See [`pr-flow/SKILL.md`](./pr-flow/SKILL.md) for the full skill definition.
-
-### pr-review
-
-Conducts a thorough review of a GitHub PR by URL. Evaluates intent, logic, implementation, and consistency, then posts a structured review comment directly to the PR.
-
-```bash
-cp -r pr-review/ ~/.claude/skills/pr-review/
-```
-
-```
-/pr-review <PR-URL>
-```
-
-See [`pr-review/SKILL.md`](./pr-review/SKILL.md) for the full skill definition. Review criteria and output format are customizable via the files in [`pr-review/resources/`](./pr-review/resources/).
 
 ---
 
