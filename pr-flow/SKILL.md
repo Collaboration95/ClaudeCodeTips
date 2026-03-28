@@ -115,9 +115,8 @@ For each completed group:
 ## Guardrails
 
 - **checklist.md is ephemeral** — it must NEVER appear in any commit or PR. Delete it before the final commit in every group. If you find it staged, unstage and delete it immediately.
-- Do NOT combine unrelated issues into a single PR for convenience
 - Do NOT skip writing tests — every code change needs test coverage
 - Do NOT modify code outside the scope of the assigned issues without flagging it
 - Do NOT force-push or rewrite history on shared branches
-- If the test suite fails and you cannot resolve it in 2 attempts, stop and ask the user
+- If the test suite fails and you cannot resolve it in 2 attempts, revert this task, note down this issue and continue other tasks.
 - Always reference issue numbers in commits and PR descriptions for traceability
