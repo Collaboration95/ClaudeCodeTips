@@ -1,30 +1,38 @@
-# PR Flow Skill — Better PRs with Claude Code
+# Better PRs with Claude Code
 
 ![Claude Code PR Workflow](./claude_code_pr_workflow.svg)
 
 ---
 
-## Overview
+## Skills
 
-A Claude Code skill that orchestrates a structured PR workflow — from intent definition through GitHub Issues, parallel enrichment, grouped implementation, and clean PR delivery.
+### pr-flow
 
-### Installation
-
-Copy the `pr-flow/` folder into your Claude Code skills directory:
+Orchestrates a structured PR workflow — from intent definition through GitHub Issues, parallel enrichment, grouped implementation, and clean PR delivery.
 
 ```bash
 cp -r pr-flow/ ~/.claude/skills/pr-flow/
 ```
 
-Then invoke with:
-
 ```
 /pr-flow <your intent here>
 ```
 
-### Skill file
+See [`pr-flow/SKILL.md`](./pr-flow/SKILL.md) for the full skill definition.
 
-See [`pr-flow/SKILL.md`](./pr-flow/SKILL.md) for the full skill definition that Claude Code executes.
+### pr-review
+
+Conducts a thorough review of a GitHub PR by URL. Evaluates intent, logic, implementation, and consistency, then posts a structured review comment directly to the PR.
+
+```bash
+cp -r pr-review/ ~/.claude/skills/pr-review/
+```
+
+```
+/pr-review <PR-URL>
+```
+
+See [`pr-review/SKILL.md`](./pr-review/SKILL.md) for the full skill definition. Review criteria and output format are customizable via the files in [`pr-review/resources/`](./pr-review/resources/).
 
 ---
 
