@@ -1,47 +1,49 @@
-# AI Context Layer
+# PR Flow Skill — Better PRs with Claude Code
 
-A portable context system for agentic coding tools. Keeps your AI grounded in your service's architecture, past decisions, and gotchas — without re-explaining anything each session.
-
-Works with **Cursor**, **OpenCode**, and **Claude Code**.
+![Claude Code PR Workflow](./claude_code_pr_workflow.svg)
 
 ---
 
-## Docs
+## Overview
 
-- [`AI-CONTEXT-LAYER.md`](AI-CONTEXT-LAYER.md) — full setup, file-by-file breakdown
-- [`repo-init-user-guide.md`](repo-init-user-guide.md) — step-by-step init and day-to-day usage
+A Claude Code skill that orchestrates a structured PR workflow — from intent definition through GitHub Issues, parallel enrichment, grouped implementation, and clean PR delivery.
+
+### Installation
+
+Copy the `pr-flow/` folder into your Claude Code skills directory:
+
+```bash
+cp -r pr-flow/ ~/.claude/skills/pr-flow/
+```
+
+Then invoke with:
+
+```
+/pr-flow <your intent here>
+```
+
+### Skill file
+
+See [`pr-flow/SKILL.md`](./pr-flow/SKILL.md) for the full skill definition that Claude Code executes.
 
 ---
 
-## Sample Structure
+## Flow for Better PRs with Claude Code
 
-Copy these files to the locations shown. Global skill files go in your home directory once. Per-repo files go in each service repo.
+1. **Define intent** — Tell Claude your intent upfront. Prompt it to validate each intention individually and document them as GitHub Issues, referencing the specific code they relate to.
 
-```
-sample-structure/
-│
-│   # Global — copy to ~/.claude/commands/
-├── .claude/
-│   └── commands/
-│       ├── update-context.md       ← /update-context  (Claude Code)
-│       └── plan-feature.md         ← /plan-feature    (Claude Code)
-│
-│   # Global — copy to ~/.cursor/rules/
-├── .cursor/
-│   └── rules/
-│       ├── update-context.mdc      ← @update-context  (Cursor)
-│       └── plan-feature.mdc        ← @plan-feature    (Cursor)
-│
-│   # Global — copy to ~/.opencode.json
-├── .opencode.json
-│
-│   # Per-repo — add to every service repo
-├── .context/
-│   ├── SERVICE.md                  ← architecture, data flow, integrations
-│   ├── PAST_LEARNINGS.md           ← append-only gotcha log
-│   └── CHANGELOG.context.md        ← SHA tracking for drift detection
-│
-├── .cursorrules                    ← Cursor entry point
-├── CLAUDE.md                       ← Claude Code entry point
-└── AGENTS.md                       ← Claude Code skill registry
-```
+2. **Reset context** — `/clear` or `/compact`. This is critical — you want the next phase to start fresh without the noise from the planning conversation.
+
+3. **Validate issues** — Open the issues and double-check them independently. Make sure each one is accurate, scoped correctly, and not missing anything before any code gets written.
+
+4. **Enrich with parallel subagents** — Tell Claude to spawn parallel subagents, one per issue, to add context, root cause analysis, and proposed solutions as comments on each GitHub Issue.
+
+5. **Reset context again** — `/compact` or `/clear` before moving into implementation.
+
+6. **Group and implement** — Give Claude the list of issues to work through. It should group related issues logically, solve them by issue reference (makes review trivial later), write tests, fix regressions, and delete outdated tests.
+
+7. **Track with checklist.md** — Instruct Claude to maintain a local `checklist.md` to track its own progress across the issue groups. This fights context rot mid-session. Critical: it must never be committed.
+
+8. **Open PR per group** — Each group gets its own PR to the target branch, with a description that explicitly references the issues it resolves.
+
+9. **Delete checklist.md** — Remind Claude to delete it before opening the PR. Local scratchpad only, never in git history.
