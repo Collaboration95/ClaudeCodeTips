@@ -9,7 +9,6 @@ allowed-tools:
   - Glob
   - WebFetch
   - Agent
-  - Skill
 argument-hint: <PR-URL>
 model: opus
 ---
@@ -73,13 +72,6 @@ Review a GitHub pull request by URL. The review process and output format are de
    - Otherwise: `gh pr review <URL> --comment --body-file "$tmpfile"`
 6. Clean up: `rm "$tmpfile"`
 7. If the review body exceeds 65,000 characters, truncate the Nits section first, then Code Quality Issues, adding a note that the full review was too large and the least critical items were trimmed.
-
-## Phase 4: Notify
-
-Invoke the `agent-done-notifier` skill with a message summarizing the review:
-```
-PR review posted for #{number} — {X critical, Y major, Z minor issues}
-```
 
 ## Error Handling
 
